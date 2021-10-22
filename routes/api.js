@@ -1,11 +1,19 @@
-const express = require('express');
+const mysql = require('mysql2');
 const api = require('express').Router();
 
-const app = require('../../Projects/express-form-project/routes');
 const moviesRouter = require('./movies');
 const reviewsRouter = require('./reviews');
 
-app.use('/movies', moviesRouter);
-app.use('/reviews', reviewsRouter);
+const db = mysql.createConnection(
+  {
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'movie_db'
+  }
+);
+
+api.use('/movies', moviesRouter(db));
+api.use('/reviews', reviewsRouter(db));
 
 module.exports = api;
