@@ -29,5 +29,18 @@ app.post('/api/add-movie', (req, res)=>{
   // res.send('added movie!')
 })
 
+app.put('/api/update-review', (req, res)=>{
+  // db.query
+  // Object.keys(req.query)
+  // THE MOVIE TO UPDATE REVIEW OF IS QUERY
+  // ?movie="" MOVIE'S NAME
+  // res.send('Updated Movie review!')
+})
+
+app.delete('/api/movie/:id', (req, res)=>{
+  // db.query
+  // req.params.id DO SMTH WITH THIS
+})
+
 
 app.listen(PORT, _=> console.log(`Listening on https://localhost:${PORT}`));
