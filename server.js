@@ -16,30 +16,39 @@ const db = mysql.createConnection(
     password: 'password',
     database: 'movie_db'
   }
-)
+);
 
 app.get('/api/movies', (req, res)=>{
-  // db.query
-  // res.json()
-})
+  db.query('SELECT * FROM movies', (err, results)=>{
+    err ? console.log(err) : null;
+    res.json(results);
+  });
+});
 
 app.post('/api/add-movie', (req, res)=>{
-  // db.query
-  // res.send('added movie!')
-})
+  const movieTitle = req.body.title
+  db.query('INSERT INTO movies(movie_name) VALUES(?)', movieTitle, (err, results)=>{
+    err ? console.log(err) : null;
+    res.send(`${req.body.title} added to the database!`)
+  });
+});
 
 app.put('/api/update-review', (req, res)=>{
-  // db.query
-  // Object.keys(req.query)
-  // THE MOVIE TO UPDATE REVIEW OF IS QUERY
-  // ?movie="" MOVIE'S NAME
-  // res.send('Updated Movie review!')
-})
+  const movieReview = req.body.review;
+  const movieId = req.body.movie_id;
+  db.query('UPDATE reviews SET review = ? WHERE movie_id = ?', [movieReview, movieId], (err, results)=>{
+    err ? console.log(err) : null;
+    res.send(`Review added!`)
+  })
+});
 
 app.delete('/api/movie/:id', (req, res)=>{
-  // db.query
-  // req.params.id DO SMTH WITH THIS
-})
+  const movieId = req.params.id;
+  db.query('DELETE FROM movies WHERE id = ?', movieId, (err, results)=>{
+    err ? console.log(err) : null;
+    res.send(`Movie deleted!`)
+  })
+});
 
 
 app.listen(PORT, _=> console.log(`Listening on https://localhost:${PORT}`));
