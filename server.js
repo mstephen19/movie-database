@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql2');
-const { uuidv4 } = require('uuid');
 
 const PORT = process.env.PORT || 6660;
 
@@ -15,7 +14,7 @@ const db = mysql.createConnection(
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'OUR_DATABASE_NAME_db'
+    database: 'movie_db'
   }
 )
 
