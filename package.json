@@ -1,0 +1,25 @@
+{
+  "name": "movie-database",
+  "version": "1.0.0",
+  "description": "Movie Database!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstephen19/movie-database.git"
+  },
+  "author": "Matt Stephens & Sarah Hollingsworth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mstephen19/movie-database/issues"
+  },
+  "homepage": "https://github.com/mstephen19/movie-database#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.2",
+    "uuid": "^8.3.2"
+  }
+}
