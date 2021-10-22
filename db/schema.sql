@@ -13,5 +13,5 @@ CREATE TABLE reviews (
   movie_id INT,
   review TEXT,
   FOREIGN KEY (movie_id)
-  REFERENCES movies(id) ON DELETE SET NULL
+  REFERENCES movies(id) ON DELETE CASCADE
 );
